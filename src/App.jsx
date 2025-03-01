@@ -1,15 +1,18 @@
 import { useDispatch, useSelector } from 'react-redux';
 import './App.css';
-import {
-	addTodoAction,
-	toggleTodoAction,
-	searchFilterChange,
-	statusFilterChange,
-	priorityFilterChange,
-} from './redux/actions';
+// import {
+// 	addTodoAction,
+// 	toggleTodoAction,
+// 	searchFilterChange,
+// 	statusFilterChange,
+// 	priorityFilterChange,
+// } from './redux/actions';
+import { filterSlice } from './reduxtoolkit/fliterSlice';
+import { todoSlice } from './reduxtoolkit/todoSlice';
 import { v4 as uuidv4 } from 'uuid';
 import { useState } from 'react';
-import { todoSelector } from './redux/selector';
+import { todoSelector } from './reduxtoolkit/selector';
+// import { todoSelector } from './redux/selector';
 function App() {
 	const todoList = useSelector(todoSelector);
 	// const searchText = useSelector((state)=> state.filter.search)
@@ -24,7 +27,7 @@ function App() {
 		e.preventDefault();
 		if (name.trim() === '') return;
 		dispatch(
-			addTodoAction({
+			todoSlice.actions.addTodo({
 				id: uuidv4(),
 				name: name,
 				priority: priority,
@@ -36,20 +39,20 @@ function App() {
 	};
 	const handleSearchFilter = (e) => {
 		setFilterSearch(e.target.value);
-		dispatch(searchFilterChange(e.target.value));
+		dispatch(filterSlice.actions.search(e.target.value));
 	};
 	const handleChangePriority = (e) => {
 		setPriority(e.target.value);
 	};
 	const handleChecked = (e) => {
 		setFilterStatus(e.target.value);
-		dispatch(statusFilterChange(e.target.value));
+		dispatch(filterSlice.actions.status(e.target.value));
 	};
 	const handleCheckedTodo = (id) => {
-		dispatch(toggleTodoAction(id));
+		dispatch(todoSlice.actions.completedTodo(id));
 	};
 	const handleChangePriorityFilter = (e) => {
-		dispatch(priorityFilterChange(e.target.value));
+		dispatch(filterSlice.actions.priority(e.target.value));
 		setPriorityFilter(e.target.value);
 	};
 
