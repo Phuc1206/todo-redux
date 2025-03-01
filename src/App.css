@@ -1,0 +1,50 @@
+.form-container {
+	box-shadow: 10px 10px 5px lightblue;
+	border: 1px solid black;
+	width: 50vw;
+	height: 50vh;
+	padding: 30px;
+	background-color: white;
+}
+.wrapper-search {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: start;
+}
+.label-search {
+	margin-bottom: 3px;
+}
+#search {
+	width: 100%;
+	height: 20px;
+}
+.wrapper-checkbox {
+	gap: 5px;
+	display: flex;
+	flex-direction: row;
+	justify-content: start;
+}
+.list-todo {
+	list-style-type: none;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+ul {
+	margin: 0;
+	padding-inline-start: 0;
+	height: 100px;
+	overflow-y: auto;
+}
+.list-todo label {
+	flex: 1;
+}
+.wrapper-add {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+}
+.wrapper-add input {
+	width: 100%;
+}
